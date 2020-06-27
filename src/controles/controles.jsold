@@ -1,0 +1,5 @@
+module.exports = app => {
+    //const ctAluno = require("./ctAluno");
+    const ctAula = require("./ctAula");
+    const ctTurma = require("./ctTurma");
+}   

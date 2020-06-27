@@ -1,0 +1,27 @@
+// -------------------------------------------------
+// MODELO = Módulo para a "formatação" da tabela 
+// indicando seu nome, respectivos campos, suas 
+// características (nome, tipo, tamanho, etc) 
+// e relacionamentos com outras tabelas
+// -------------------------------------------------
+const { Model, DataTypes } = require("sequelize");
+const db = require("../database/conexao");
+ 
+//const db = require("../database/conexao");
+
+const Turma = db.conect.define('turmas', {
+
+    turma: {
+        type: db.Sequelize.STRING(10),
+        allowNull: false
+      }
+    }, {
+      // options
+      freezeTableName: true
+   });
+
+   //aluno.belongsTo(Turma); 
+ 
+Turma.sync();
+
+module.exports = Turma;

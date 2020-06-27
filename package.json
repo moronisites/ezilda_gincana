@@ -1,0 +1,31 @@
+{
+  "name": "escola004",
+  "version": "1.0.0",
+  "description": "estudo de SQL no NODE de acordo com o tutorial do Rocketseat versão escola",
+  "main": "serv.js",
+  "scripts": {
+    "dev": "nodemon serv.js",
+    "start": "nodemon serv.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moronisites/escola004.git"
+  },
+  "author": "Moroni Pedrosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moronisites/escola004/issues"
+  },
+  "homepage": "https://github.com/moronisites/escola004#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.13",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
