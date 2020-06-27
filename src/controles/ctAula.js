@@ -23,23 +23,45 @@ module.exports = {
 
     async grava(req, res) {
         try {
+            console.log("gravei aula");
             const {
                 data,
                 codHabilidade,
                 descricao,
                 entrega
             } = req.body;
-            const aula = await Aula.create({
+            const aular = await Aula.create({
                 data,
                 codHabilidade,
                 descricao,
                 entrega
             });
-            return res.json(aula);
-        } catch {
-            console.log("aula NAO gravada");
+            return res.json(aular);
+        } catch (error) {
+            console.log("aulas NAO Gravadas");
             console.log(error);
             return res.json("Erro ao gravar aulas");
-        }
+        };
     }
+    // async grava(req, res) {
+    //     try {
+    //         const {
+    //             data,
+    //             codHabilidade,
+    //             descricao,
+    //             entrega
+    //         } = req.body;
+    //         const aular = await Aula.create({
+    //             data,
+    //             codHabilidade,
+    //             descricao,
+    //             entrega
+    //         });
+    //         return res.json(aular);
+    //     } catch {
+    //         console.log("aula NAO gravada");
+    //         console.log(error);
+    //         return res.json("Erro ao gravar aulas");
+    //     }
+    // }
 };

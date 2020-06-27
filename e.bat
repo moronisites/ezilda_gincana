@@ -1,1 +1,2 @@
+cls
 npm start

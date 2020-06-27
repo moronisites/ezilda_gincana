@@ -26,9 +26,9 @@ module.exports = {
         const {
             turma
         } = req.body;
-        const turma = await Turma.create({
+        const turmar = await Turma.create({
             turma
         });
-        return res.json(turma);
+        return res.json(turmar);
     }
 };
