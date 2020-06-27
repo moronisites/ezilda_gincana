@@ -21,7 +21,7 @@ app.use(rotas);
 
 db.conect.authenticate().then(function () {
     console.log("conexão realizada com sucesso");
-    app.listen(3003, () => console.log("servidor ativo"));
+    app.listen(3000, () => console.log("servidor ativo"));
 }).catch(function (err) {
     console.log("erro ao conectar -> " + err);
 });
