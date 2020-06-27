@@ -5,35 +5,46 @@
 // e relacionamentos com outras tabelas
 // -------------------------------------------------
 
-const db = require("../database/conexao");
-const turma = require("./mdTurma")
+'use strict'
 
+const {
+    Model,
+    DataTypes
+} = require('sequelize');
 
-const Aula = db.conect.define('aulas', {
-
-    data: {
-        type: db.Sequelize.DATEONLY,
-        allowNull: false
-    },
-    codHabilidade: {
-        type: db.Sequelize.STRING(12)
-    },
-    descricao: {
-        type: db.Sequelize.STRING
-    },
-    entrega: {
-        type: db.Sequelize.BOOLEAN
+class Aula extends Model {
+    static init(sequelize) {
+        super.init({
+            data: {
+                type: DataTypes.DATEONLY,
+                allowNull: false
+            },
+            codHabilidade: {
+                type: DataTypes.STRING(12)
+            },
+            descricao: {
+                type: DataTypes.STRING
+            },
+            entrega: {
+                type: DataTypes.BOOLEAN
+            }
+        }, {
+            freezeTableName: true,
+            tableName: 'aulas',
+            sequelize
+        })
     }
-}, {
-    // options
-    freezeTableName: true
-});
-turma.hasOne(Aula);
 
-// belongsTo adiciona a relação à tabela na qual 
-// você está chamando o método, 
-// hasOne adiciona na tabela que é dada como argumento.
+    // belongsTo adiciona a relação à tabela na qual 
+    // você está chamando o método, 
+    // hasOne adiciona na tabela que é dada como argumento.
 
-Aula.sync();
+    // static associate(models) {
+    //     this.belongsTo(models.Turma, {
+    //         foreignKey: "idTurma"
+    //     });
+    // }
+
+}
 
 module.exports = Aula;

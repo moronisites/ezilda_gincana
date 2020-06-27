@@ -1,38 +1,27 @@
+// -------------------------------------------------
+//  Módulo inicial: 
+//  sobe o servidor e carrega os demais módulos 
+// -------------------------------------------------
+
+'use strict'
+
 const express = require("express");
-const consign = require('consign');
-const app = express();
-//const db = require("./src/database/conexao");
-//const router = express.Router();
+const bodyParser = require("body-parser");
 
-consign()
-    .include("libs/bodyps.js")
-    //.then("./src/rotas/rotas.js") //para as rotas a definição NÃO é aqui.
-    .then("./src/modelos/modelos.js")
-    .then("./src/controles/controles.js")
-    .into(app);
-
-
-
-
-//const handlebars = require("express-handlebars");
 const rotas = require("./src/rotas/rotas.js");
+require("./src/config/database")
+const app = express();
+const db = require("./src/database/conexao");
 
-
-// configuração do handlebars
-//app.engine("handlebars", handlebars({
-//    defaultLayout: "main"
-//}));
-//app.set("view engine", "handlebars");
-
-console.log("------------- nova  -------------");
-//app.use("/aula", rotas);
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(rotas);
 
 db.conect.authenticate().then(function () {
     console.log("conexão realizada com sucesso");
-    app.listen(3003, () => console.log("-----xxxxx ---- servidor =======2======= ativo ---- xxxxx-----"));
-
+    app.listen(3003, () => console.log("servidor ativo"));
 }).catch(function (err) {
     console.log("erro ao conectar -> " + err);
-
 });

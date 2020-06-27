@@ -5,6 +5,8 @@
 // e relacionamentos com outras tabelas
 // -------------------------------------------------
 
+'use strict'
+
 const {
   Model,
   DataTypes
@@ -16,22 +18,11 @@ class Turma extends Model {
       turma: DataTypes.STRING(10),
     }, {
       freezeTableName: true,
-      tableName: 'turma',
+      tableName: 'turmas',
       sequelize
     })
   }
 
-  // static associate(models) {
-  //   this.hasMany(models.Address, {
-  //     foreignKey: 'user_id',
-  //     as: 'addresses'
-  //   });
-  //   this.belongsToMany(models.Tech, {
-  //     foreignKey: 'user_id',
-  //     through: 'user_techs',
-  //     as: 'techs'
-  //   });
-  // }
 }
 
 module.exports = Turma;

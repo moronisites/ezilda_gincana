@@ -2,28 +2,40 @@
 // MODELO = Módulo para a "formatação" da tabela 
 // indicando seu nome, respectivos campos, suas 
 // características (nome, tipo, tamanho, etc) 
-// e relacionamentos com outras tabelas
+// e relacionamentos com outras tabelas 
 // -------------------------------------------------
 
-const db = require("../database/conexao");
-const turma = require("./mdTurma")
+'use strict'
 
-const Aluno = db.conect.define('alunos', {
+const Turma = require("../modelos/mdTurma");
 
-    nome: {
-        type: db.Sequelize.STRING(55),
-        allowNull: false
-      }
+const {
+  Model,
+  DataTypes
+} = require('sequelize');
+
+class Aluno extends Model {
+  static init(sequelize) {
+    super.init({
+      nome: DataTypes.STRING(55),
+      numero: DataTypes.INTEGER,
     }, {
-      // options
-      freezeTableName: true
-   });
-   turma.hasOne(Aluno); 
+      freezeTableName: true,
+      tableName: 'alunos',
+      sequelize
+    })
+  }
 
-// belongsTo adiciona a relação à tabela na qual 
-// você está chamando o método, 
-// hasOne adiciona na tabela que é dada como argumento.
+  // belongsTo adiciona a relação à tabela na qual 
+  // você está chamando o método, 
+  // hasOne adiciona na tabela que é dada como argumento.
 
-Aluno.sync();  // cria a tabela, caso ainda não exista.
+  static associate(models) {
+    this.belongsTo(Turma, {
+      foreignKey: "idTurma"
+    });
+  }
+
+}
 
 module.exports = Aluno;
