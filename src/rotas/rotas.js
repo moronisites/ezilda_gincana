@@ -7,14 +7,14 @@
 
 const express = require('express');
 
-//const ctAluno = require("../controles/ctAluno");
+const ctAluno = require("../controles/ctAluno");
 const ctTurma = require("../controles/ctTurma");
 const ctAula = require("../controles/ctAula");
 
 const rotas = express.Router();
 
-//rotas.get('/alunos', ctAluno.lista);
-//rotas.post('/alunos', ctAluno.grava);
+rotas.get('/alunos', ctAluno.lista);
+rotas.post('/alunos', ctAluno.grava);
 
 rotas.get("/aulas", ctAula.lista);
 rotas.post("/aulas", ctAula.grava);
