@@ -13,7 +13,7 @@ module.exports = {
     async lista(req, res) {
         try {
             console.log("listei turma");
-            const turmas = await Turma.findAll();
+            const turmas = await Turma.findAll({ raw: true });
             return res.json(turmas);
         } catch (error) {
             console.log("turmas NAO listadas");

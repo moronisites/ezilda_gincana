@@ -19,19 +19,26 @@ const dbConfig = require("../config/database");
 const Turma = require("../modelos/mdTurma");
 const Aluno = require("../modelos/mdAluno");
 const Aula = require("../modelos/mdAula");
+const Tarefa = require("../modelos/mdTarefa");
+const TarefaAluno = require("../modelos/mdTarefaAluno");
 // -------------------------------------------------
 
 const conect = new Sequelize(dbConfig); // "ativa" a conexão 
 
+Tarefa.init(conect);
 Turma.init(conect);
 Aluno.init(conect);
 Aula.init(conect);
+TarefaAluno.init(conect);
 
 Aluno.associate(conect);
+TarefaAluno.associate(conect);
 
+Tarefa.sync(conect);
 Turma.sync(conect);
 Aluno.sync(conect);
 Aula.sync(conect);
+TarefaAluno.sync(conect);
 
  module.exports = {
      Sequelize: Sequelize,

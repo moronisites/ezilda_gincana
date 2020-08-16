@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alunos</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+    <table>
+      <thead>
+          <tr>
+              <th>Nome______________________________________</th>
+              <th>Numero   </th>
+              <th>Turma</th>
+          </tr>
+      </thead>
+      <tbody>
+      <% for(let item of dadosDosAlunos) { %>
+          <tr>
+              <td><%= item.nome %></td>
+              <td><%= item.numero %></td>
+              <td><%= item.idTurma %></td>
+          </tr>
+      <% } %>
+      </tbody>
+      <tfoot>
+          <tr>
+              <td></td>
+              <td>
+                  <%= 
+                  dadosDosAlunos
+                          .map(a => a.numero)
+                          .reduce((acc, cur) => acc + cur);
+                  %>
+              </td>
+              <td>
+                <%= 
+                dadosDosAlunos
+                        .map(a => a.idTurma)
+                        .reduce((acc, cur) => acc + cur);
+                %>
+              </td>
+          </tr>
+      </tfoot>
+  </table>
+
+    <h1>Listado nome</h1>
+    <p>Welcome</p>
+  </body>
+</html>

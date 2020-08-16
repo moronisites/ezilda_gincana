@@ -4,10 +4,10 @@ module.exports = {
      dialect: 'mysql',
      
 // ===  configuração Lenovo  ===
-     host: 'localhost',
-     username: 'root',
-     password: '123456',
-     database: 'escola02',
+//     host: 'localhost',
+//     username: 'root',
+//     password: '123456',
+//     database: 'escola02',
 //=== === === === === === === ===  
 
 //// ===  configuração DeskTop  ===
@@ -18,12 +18,21 @@ module.exports = {
 ////=== === === === === === === ===  
   
 //// ===  configuração Umbler  ===
-//      host: 'mysql669.umbler.com',
-//      port: 41890,
+      host: 'mysql669.umbler.com',
+      port: 41890,
+      username: 'sqlallex',
+      password: 'SQL123456',
+      database: 'moroniteste',
+////=== === === === === === === ===  
+
+//// ===  configuração Amazon  ===
+//      host: 'database-escola.chpihgugzrnf.us-east-1.rds.amazonaws.com',
+//      port: 3306,
 //      username: 'sqlallex',
 //      password: 'SQL123456',
 //      database: 'moroniteste',
 ////=== === === === === === === ===  
+
 
     define: {
         timestamps: true,   // todas as tabelas terão  createdAt & updateAt

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listagem de Alunos</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Listagem dos Alunos</h1>
+  
+    <table>
+      <thead>
+          <tr>
+              <th>Nome______________________________________</th>
+              <th>Numero   </th>
+              <th>Turma</th>
+          </tr>
+      </thead>
+      <tbody>
+      <% for(let item of dadosDosAlunos) { %>
+          <tr>
+              <td><%= item.nome %></td>
+              <td><button name: teste><%= item.numero %></button></td>
+              <td>turma..<%= item.idTurma %></td>
+              <td>numero..<%= item.numero %></td>
+              <td>pedida..<%= item.dataPedida %></td>
+          </tr>
+      <% } %>
+      </tbody>
+  </table>
+
+  </body>
+</html>

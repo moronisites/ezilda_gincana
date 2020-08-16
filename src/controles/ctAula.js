@@ -12,7 +12,7 @@ module.exports = {
 
     async lista(req, res) {
         try {
-            const aulas = await Aula.findAll();
+            const aulas = await Aula.findAll({ raw: true });
             return res.json(aulas);
         } catch (error) {
             console.log("aulas NAO listadas");

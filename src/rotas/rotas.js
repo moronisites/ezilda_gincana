@@ -13,8 +13,11 @@ const ctAula = require("../controles/ctAula");
 
 const rotas = express.Router();
 
-rotas.get('/alunos', ctAluno.lista);
-rotas.post('/alunos', ctAluno.grava);
+
+rotas.get("/alunos", ctAluno.lista);
+rotas.get("/turma/:id", ctAluno.listaAlunosTurma);
+rotas.get("/aluno/:id", ctAluno.listaNumero);
+rotas.post("/aluno", ctAluno.grava);
 
 rotas.get("/aulas", ctAula.lista);
 rotas.post("/aulas", ctAula.grava);
