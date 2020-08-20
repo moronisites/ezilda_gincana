@@ -20,7 +20,9 @@
           <tr>
               <td><%= item.nome %></td>
               <% for(let tarefa of dadosDasTarefas) { %>
-              <td>data:<%= tarefa.dataPedida %></td>
+              <td>data:<%= tarefa.dataEntrega %></td>
+              <td>nota:<%= tarefa.conceito %></td>
+              <td><%= btt %></td>
               <% } %>
           </tr>
       <% } %>
