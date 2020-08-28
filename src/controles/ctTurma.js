@@ -10,7 +10,7 @@ const Turma = require('../modelos/mdTurma');
 
 module.exports = {
 
-    async lista(req, res) {
+    async listaTurma(req, res) {
         try {
             console.log("listei turma");
             const turmas = await Turma.findAll({ raw: true });
@@ -21,7 +21,7 @@ module.exports = {
         }
     },
 
-    async grava(req, res) {
+    async gravaTurma(req, res) {
         console.log("gravei turma");
         const {
             turma

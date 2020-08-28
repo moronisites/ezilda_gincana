@@ -19,8 +19,16 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(rotas);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '')));
 app.set("view engine", "ejs");
+
+function meFala(params) {
+    console.log(params);
+}       
+
+//app.locals.meFala = meFala;
+//app.locals = require("./src/controles/ctTarefaAluno");
+
 
 
 db.conect.authenticate().then(function () {

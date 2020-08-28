@@ -10,7 +10,7 @@
 //
 // -------------------------------------------------
 
-'use strict'
+//'use strict'
 
 // -------- Importa os módulos necessários ---------
 const Sequelize = require("sequelize");          

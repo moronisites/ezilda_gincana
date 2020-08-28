@@ -10,7 +10,7 @@ const Aula = require('../modelos/mdAula');
 
 module.exports = {
 
-    async lista(req, res) {
+    async listaAula(req, res) {
         try {
             const aulas = await Aula.findAll({ raw: true });
             return res.json(aulas);
@@ -21,7 +21,7 @@ module.exports = {
         }
     },
 
-    async grava(req, res) {
+    async gravaAula(req, res) {
         try {
             console.log("gravei aula");
             const {

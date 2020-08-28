@@ -6,3 +6,186 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.alinhaLinha{
+	display: flex;
+	padding: 20px;
+	align-items: flex-end;
+	justify-content: space-around;
+}
+
+
+.btPqBase {
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 4px;
+	text-decoration:none;
+  width: 70px;
+  height: 30px;
+}
+
+.btPqBase:active {
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+.btBase {
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 10px;
+	text-decoration:none;
+  width: 150px;
+  height: 40px;
+}
+
+.btTarefa {
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:5px 5px;
+	text-decoration:none;
+  width: 150px;
+  height: 30px;
+}
+
+.btBase:active {
+	position:relative;
+	top:3px;
+	left:3px;
+}
+
+.btAzul {
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border:2px solid #84bbf3;
+	color:#ffffff;
+	text-shadow:0px 1px 0px #528ecc;
+}
+.btAzul:hover {
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+}
+
+.btVermelho {
+	box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+	background-color:#fe1a00;
+	border:2px solid #d83526;
+	color:#ffffff;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.btVermelho:hover {
+	background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+	background-color:#ce0100;
+}
+
+.btVerde {
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	background-color:#77d42a;
+	border:2px solid #268a16;
+	color:#ffffff;
+	text-shadow:0px 1px 0px #aade7c;
+}
+.btVerde:hover {
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	background-color:#5cb811;
+}
+
+
+.btLaranja {
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color:#ffec64;
+	border:1px solid #ffaa22;
+	color:#333333;
+	text-shadow:0px 1px 0px #ffee66;
+}
+.btLaranja:hover {
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color:#ffab23;
+}
+
+.btComTr{
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border:2px solid #84bbf3;
+	color:#ffffff;
+	text-shadow:0px 1px 0px #528ecc;
+}
+.btComTr:hover {
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+}
+
+.btSemTr{
+	box-shadow:inset 0px 1px 0px 0px #ebe3a9;
+	background:linear-gradient(to bottom, #ecead9 5%, #70685b 100%);
+	background-color:#ffec64;
+	border:1px solid #36332e;
+	color:#333333;
+	text-shadow:0px 1px 0px #8b8b88;	
+}
+.btSemTr:hover {
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color:#ffab23;
+}
+
+.modal-container {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.5);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 3000;
+}
+
+.modal-container.mostrar {
+	display: flex;
+}
+
+@keyframes modalAbre {
+	from{
+		opacity: 0;
+		transform: translate3d(-60px,-30px,0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+
+.modalTarefaAluno {
+	background: white;
+	width: 20%;
+	height: 25%;
+	min-height: 200px;
+	min-width: 200px;
+	padding: 10px;
+	border: 5px solid #378de5;
+	box-shadow: 0,0,0,10px #63B8EE;
+	position: relative;
+}
+
+.mostrar .modalTarefaAluno {
+	animation: modalAbre .1s;
+}

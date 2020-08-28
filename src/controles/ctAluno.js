@@ -6,52 +6,12 @@
 
 'use strict'
 
-const bdconect = require("../database/conexao");
+//const bdconect = require("../database/conexao");
 const Aluno = require('../modelos/mdAluno');
-const Tarefa = require('../modelos/mdTarefa');
+//const Tarefa = require('../modelos/mdTarefa');
 const TarefaAluno = require('../modelos/mdTarefaAluno');
 
 module.exports = {
-    
-    
-    async lista(req, res) {
-        //var listaTarefasOk = [0,0,"",0];
-        //var listaTarefasOk = [[],[],[],[]];
-        
-        try {
-            const alunos = await Aluno.findAll({ raw: true });
-            const tarefas = await Tarefa.findAll({ raw: true, order: [["dataPedida"]] });
-            const ttAlunos = alunos.length;
-            const ttTarefas = tarefas.length;
-            var listaTarefasOk = new Array(ttAlunos);
-            console.table(alunos);
-            console.table(tarefas);
-            alunos.forEach((elementAl, indexAl, arrayAl) => {
-                tarefas.forEach(async(elementTr, indexTr, arrayTr) => {
-                    const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: {idAluno: alunos[indexAl].id, idTarefa: tarefas[indexTr].id}});
-                        if (tarefasAluno.length > 0) {
-                            var trf = [[alunos[indexAl].id,tarefas[indexTr].id,tarefasAluno[0].dataEntrega,tarefasAluno[0].conceito]];
-                        } else {
-                            var trf = [[alunos[indexAl].id,tarefas[indexTr].id,"NÃO REALIZADA",0]];
-                        };
-                        listaTarefasOk[alunos[indexAl].id] = "---";
-                        console.log(alunos[indexAl].id," - ",listaTarefasOk[alunos[indexAl].id])
-//                        listaTarefasOk[alunos[indexAl].id][tarefas[indexTr].id] = "---";
-                    }
-                );
-            });
-            console.table(listaTarefasOk);
-            console.log(listaTarefasOk);
-            let listaAlunos = res.json(listaTarefasOk);
-            return listaAlunos;
-
-        } catch (error) {
-            console.log(error);
-            return res.json("Erro ao listar as tarefas e os alunos");
-        }
-    },
-
-        
 
     async listaAlunosTurma(req, res) {
         try {
@@ -108,7 +68,7 @@ module.exports = {
         }
     },
 
-    async grava(req, res) {
+    async gravaAluno(req, res) {
         try {
             console.log("gravei aluno");
             const {
@@ -135,142 +95,3 @@ module.exports = {
     }
 };
 
-
-// =================== seção dos descartes ======================================
-
-// ok -> const alunos = await Aluno.findAll({raw: true, attributes: ["id","nome","numero","idTurma"]});
-// alunos.forEach(() => console.log({alunos}));
-
-// var table = document.getElementById('tablePesquisa');
-// var row = table.insertRow(1);
-// row.innerHTML = "<td>"+nome+"</td> <td>"+local+"</td><td>"+cidade+"</td><td>"+status+"</td>";
-
-// ok -> const alunos = await TarefaDia.findAll({where:{idAluno: busca}});
-// ok -> const alunos = await bdconect.conect.query("SELECT * FROM alunos AL LEFT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno");
-// ok -> const alunos = await bdconect.conect.query("SELECT * FROM alunos AL LEFT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno ORDER BY TD.dataPedida, AL.numero");
-// ok -> const alunos = await bdconect.conect.query("SELECT * FROM alunos AL LEFT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno UNION SELECT * FROM alunos AL RIGHT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno");
-
-// erro const alunos = await Aluno.findAll({where:{idTurma: busca}, include: [TarefaDia.findAll()] });
-// erro const alunos = await TarefaDia.findAll({include: [Aluno.findAll({order: [["nome"]]})], order: [["dataPedida"]]});
-
-//--v--este funciona mas só na ordem de dataPedida-----------------------------------------
-//  const alunos = await TarefaDia.findAll({include: [Aluno], order: [["dataPedida"]]});
-//--^--este funciona mas só na ordem de dataPedida-----------------------------------------
-
-// OK -> const alunos = await bdconect.conect.query("SELECT AL.numero, AL.nome, AL.id, TD.dataPedida, TD.dataEntrega, TD.idAluno FROM alunos AL LEFT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno UNION SELECT AL.numero, AL.nome, AL.id, TD.dataPedida, TD.dataEntrega, TD.idAluno FROM alunos AL RIGHT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno");
-// ok -> const todosalunos = await bdconect.conect.query("CREATE OR REPLACE VIEW tabelaTarefas AS SELECT AL.numero, AL.nome, AL.id, TD.dataPedida, TD.dataEntrega, TD.idAluno FROM alunos AL LEFT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno UNION SELECT AL.numero, AL.nome, AL.id, TD.dataPedida, TD.dataEntrega, TD.idAluno FROM alunos AL RIGHT OUTER JOIN tarefaDia TD ON AL.id = TD.idAluno");
-// ok -> const alunos = await bdconect.conect.query("SELECT nome, dataPedida FROM tabelaTarefas ORDER BY numero, dataPedida");
-
-// ok -> const alunos = await bdconect.conect.query("SELECT * FROM tarefaDia TD LEFT OUTER JOIN alunos AL ON AL.id = TD.idAluno");
-
-// ok -> console.log(tarefasAluno);
-// ok -> console.log(tarefasAluno.length);
-// ok -> console.log(tarefasAluno[0].idAluno);
-
-
-            //    console.log("#######################################################");
-            //    console.log(alunoId, " - ", tarefaId, " - ", tarefasAluno[0].dataEntrega, " - ", tarefasAluno[0].conceito);
-            //} else {
-            //    console.log(".......................................................");
-            //    //listatarefas.push("Não Entregue");
-
-
-            // alunos.forEach((elementAl, indexAl, arrayAl) => {
-            //     tarefas.forEach(async(elementTr, indexTr, arrayTr) => {
-            //         const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: {idAluno: alunos[indexAl].id, idTarefa: tarefas[indexTr].id}});
-            //         const listaTarefasAlunos = async() => {
-            //             if (tarefasAluno.length > 0) {
-            //                 //listaTarefasOk.push([alunos[indexAl].id], [tarefas[indexTr].id], [tarefasAluno[0].dataEntrega], [tarefasAluno[0].conceito] );
-            //                 listaTarefasOk.push(" FEITA ");
-            //                 console.log("aluno: -> ",alunos[indexAl].id, " idTarefa: -> ", tarefas[indexTr].id ,tarefasAluno[0].dataEntrega," nota -> ", tarefasAluno[0].conceito)
-            //             } else {
-            //                 listaTarefasOk.push(" Não Entregue ");
-            //             };
-                        
-            //         };
-            //         var lt2 = await listaTarefasAlunos();
-                    
-            //     });
-            // });
-
-
-//        function buscaTarefa(erro,conteudo){
-//            
-//        };
-//        
-//        var listatarefas = [];
-//        // inicio - função para buscar tarefa por aluno ----------------------------------------------------------
-//        // parametros:
-//        // id do aluno e id da tarefa
-//        //
-//        const tarefaPorAluno = async(alunoId,tarefaId,indAl) =>{
-//            const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: {idAluno: alunoId, idTarefa: tarefaId}});
-//            let tarefa = [indA,indAl," -> ",alunoId,tarefaId," Não Enntregue",0];
-//            if (tarefasAluno.length > 0) {
-//                tarefa = [indA,indAl,alunoId,tarefaId,tarefasAluno[0].dataEntrega,tarefasAluno[0].conceito];
-//            }
-//            listatarefas[indAl] = tarefa;
-//            console.log(" ------------- este veio --------------> ",indA,listatarefas[indAl]);
-//            process.stdout.write('ok=============================');
-////listatarefas.push(tarefa);
-//            //console.log(tarefa);
-//            return tarefa;
-//        }
-//        // fim - função para buscar tarefa por aluno ----------------------------------------------------------
-// 
-// 
-//    
-//        try {
-//            const alunos = await Aluno.findAll({ raw: true });
-//            const tarefas = await Tarefa.findAll({ raw: true, order: [["dataPedida"]] });
-//            let tarefasTotal = tarefas.length;
-//            console.log(tarefasTotal);
-//            var colunas = [""];
-//            //var listatarefas = [[],[]];
-//            var listaFinal = [];
-//            tarefas.forEach((elementTr, indexTr, arrayTr) => {
-//                colunas.push("{dataPed: " + tarefas[indexTr].dataPedida + ", idTarefa: " + tarefas[indexTr].id + "}");
-//            });
-//            //-----------------------------------
-//            //para retornar em json: 
-//            //let listaAlunos = res.json(alunos);
-//            //return listaAlunos;
-//            //-----------------------------------
-//            var indA = -1;
-//            alunos.forEach((elementAl, indexAl, arrayAl) => {
-//                indA = indA + 1;
-//                var alunosTotal = alunos.length;
-//                var alunoId = alunos[indexAl].id;
-//                var alunoNome = alunos[indexAl].nome;
-//                var alunoNumero = alunos[indexAl].numero;
-//                try {
-//                    var indT = -1; 
-//                    tarefas.forEach(async(elementTr, indexTr, arrayTr) => {
-//                        indT = indT + 1;
-//                        tarefaPorAluno(alunoId,tarefas[indexTr].id,indA).then(veio => {
-//                            //console.log("--------------------> ",veio);
-////                            listatarefas[indA] = veio;
-////                            console.log(" ------------- este veio --------------> ",indA,indT,listatarefas[indA]);
-//                            });
-//                    });
-//                    console.table(listatarefas);
-//                    listaFinal.push(alunoNome,listatarefas,"xxxx");
-//                    //listatarefas = [];
-//                    //console.log("Nome do aluno ",alunos[index].nome, "  numero ",alunos[index].numero, "  turma ",alunos[index].idTurma);
-//                } catch (error) {
-//                    console.log(error);
-//                    return res.json("Erro ao listar as tarefas e os alunos");
-//                }
-//            });
-//            console.table(listaFinal); 
-//            console.table(colunas);
-//            console.table(listatarefas);
-//            return res.render('tabelaAlunos', {
-//                dadosDosAlunos: alunos
-//            });
-//        } catch (error) {
-//            console.log("alunos NAO listados");
-//            console.log(error);
-//            return res.json("Erro ao listar alunos");
-//        }
-//    },
