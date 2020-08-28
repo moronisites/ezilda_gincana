@@ -4,10 +4,10 @@ module.exports = {
      dialect: 'mysql',
      
 // ===  configuração Lenovo  ===
-     host: 'localhost',
-     username: 'root',
-     password: '123456',
-     database: 'escola04',
+//     host: 'localhost',
+//     username: 'root',
+//     password: '123456',
+//     database: 'escola04',
 //=== === === === === === === ===  
 
 //// ===  configuração DeskTop  ===
@@ -18,11 +18,11 @@ module.exports = {
 ////=== === === === === === === ===  
   
 //// ===  configuração Umbler  ===
-//      host: 'mysql669.umbler.com',
-//      port: 41890,
-//      username: 'sqlallex',
-//      password: 'SQL123456',
-//      database: 'moroniteste',
+      host: 'mysql669.umbler.com',
+      port: 41890,
+      username: 'sqlallex',
+      password: 'SQL123456',
+      database: 'escola04',
 ////=== === === === === === === ===  
 
 //// ===  configuração Amazon  ===
