@@ -15,13 +15,14 @@ module.exports = {
 
     async listaTarefasAlunos(req, res) {
         try {
+            let busca = req.params.id;
 
             function dataOk(date){	
 	            return date.split('-').reverse().join('/');
             }
             // dica: numero = 5 -> numero.toString().padStart(2, '0') -> 05
 
-            const alunos = await Aluno.findAll({raw: true});
+            const alunos = await Aluno.findAll({raw: true, where: {idTurma: busca}});
             const tarefas = await Tarefa.findAll({raw: true, order: [["dataPedida"]]});
 
             var listaTarefasTodas = "";

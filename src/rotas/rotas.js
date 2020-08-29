@@ -26,7 +26,7 @@ rotas.post("/aulas", ctAula.gravaAula);
 rotas.get("/turmas", ctTurma.listaTurma);
 rotas.post("/turmas", ctTurma.gravaTurma);
 
-rotas.get("/tarefasAlunos", ctTarefaAluno.listaTarefasAlunos);
+rotas.get("/tarefasAlunos/:id", ctTarefaAluno.listaTarefasAlunos);
 rotas.post("/tarefaAluno", ctTarefaAluno.tarefaAlunoNova);
 rotas.post("/tarefaAluno/:id", ctTarefaAluno.tarefaAlunoEdita);
 rotas.delete("/tarefaAluno/:id", ctTarefaAluno.tarefaAlunoExclui);
