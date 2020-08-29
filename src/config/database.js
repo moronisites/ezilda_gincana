@@ -26,11 +26,14 @@ module.exports = {
 ////=== === === === === === === ===  
 
 //// ===  configuração Amazon  ===
-//      host: 'database-escola.chpihgugzrnf.us-east-1.rds.amazonaws.com',
+//  nao    host: 'database-escola.chpihgugzrnf.us-east-1.rds.amazonaws.com',
+//      host: 'escola04.chpihgugzrnf.us-east-1.rds.amazonaws.com',
 //      port: 3306,
-//      username: 'sqlallex',
+//      username: 'admin',
 //      password: 'SQL123456',
-//      database: 'moroniteste',
+//      database: 'escola04',
+//
+//      https://948493867800.signin.aws.amazon.com/console/
 ////=== === === === === === === ===  
 
 
