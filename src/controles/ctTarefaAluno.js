@@ -37,7 +37,7 @@ module.exports = {
                 listaTarefasTodas = listaTarefasTodas + '<tr><td><div class="nomeNr" id="idA' 
                 + alunos[i1].id.toString().padStart(2, '0') + '">'
                 + alunos[i1].numero.toString().padStart(2, '0') + ' - ' 
-                + alunos[i1].nome+'</div><div class="mediaTr">00</div><div class="totalTr">xx</div></td>';
+                + alunos[i1].nome+'</div><div class="mediaTr">00</div><div class="totalTr">00</div></td>';
                 for (var i2 = 0; i2 < (tarefas.length); i2++) {
                     const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: { idAluno: alunos[i1].id, idTarefa: tarefas[i2].id } });
                     if (tarefasAluno.length > 0) {
