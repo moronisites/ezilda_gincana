@@ -35,7 +35,7 @@ module.exports = {
             });   
             for (var i1 = 0; i1 < (alunos.length) ;i1++) {
                 listaTarefasTodas = listaTarefasTodas + '<tr><td><div class="nomeNr" id="idA' 
-                + alunos[i1].id.toString().padStart(2, '0') + '>'
+                + alunos[i1].id.toString().padStart(2, '0') + '">'
                 + alunos[i1].numero.toString().padStart(2, '0') + ' - ' 
                 + alunos[i1].nome+'</div><div class="mediaTr">00</div><div class="totalTr">xx</div></td>';
                 for (var i2 = 0; i2 < (tarefas.length); i2++) {
