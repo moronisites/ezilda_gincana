@@ -15,6 +15,32 @@ a {
 	justify-content: space-around;
 }
 
+.mediaTr {
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	width: 20px;
+  	height: 40px;
+}
+
+.totalTr {
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	width: 20px;
+  	height: 40px;
+}
+
+.nomeNr {
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	width: 220px;
+  	height: 40px;
+}
 
 .btPqBase {
 	border-radius:6px;
