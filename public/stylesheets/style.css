@@ -40,12 +40,12 @@ a {
 
 .alunoNm {
 	font-family:Arial;
-	font-size:12px;
+	font-size:10px;
 	font-weight:bold;
 	text-decoration:none;
 	display: inline-block;
 	padding:5px 5px;
-	width: 180px;
+	width: 120px;
 	height: 25px;
 	max-height: 25px;
 }
