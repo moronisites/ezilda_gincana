@@ -23,10 +23,10 @@ module.exports = {
             // dica: numero = 5 -> numero.toString().padStart(2, '0') -> 05
 
             const alunos = await Aluno.findAll({raw: true, where: {idTurma: busca}});
-            const tarefas = await Tarefa.findAll({raw: true, order: [["dataPedida"]]});
+            const tarefas = await Tarefa.findAll({raw: true, where: {idTurma: busca}, order: [["dataPedida"]]});
 
             var listaTarefasTodas = "";
-            var topoTarefas = "<th>Nome do aluno</th>";
+            var topoTarefas = "<th>Nome do aluno............................</th>";
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
                 topoTarefas = topoTarefas 
@@ -34,10 +34,12 @@ module.exports = {
                 + '">' + dataOk(tarefas[indexTr].dataPedida) + '</th>'
             });   
             for (var i1 = 0; i1 < (alunos.length) ;i1++) {
-                listaTarefasTodas = listaTarefasTodas + '<tr><td><div class="nomeNr" id="idA' 
+                listaTarefasTodas = listaTarefasTodas + '<tr><td class="nomeNrNota"><div class="nomeNr" id="idA' 
                 + alunos[i1].id.toString().padStart(2, '0') + '">'
                 + alunos[i1].numero.toString().padStart(2, '0') + ' - ' 
-                + alunos[i1].nome+'</div><div class="mediaTr">00</div><div class="totalTr">00</div></td>';
+                + alunos[i1].nome+'</div><div class="mediaTr'
+                + alunos[i1].id.toString().padStart(2, '0') +'">00</div><div class="totalTr'
+                + alunos[i1].id.toString().padStart(2, '0') +'">00</div></td>';
                 for (var i2 = 0; i2 < (tarefas.length); i2++) {
                     const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: { idAluno: alunos[i1].id, idTarefa: tarefas[i2].id } });
                     if (tarefasAluno.length > 0) {
