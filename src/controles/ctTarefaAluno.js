@@ -26,7 +26,7 @@ module.exports = {
             const tarefas = await Tarefa.findAll({raw: true, where: {idTurma: busca}, order: [["dataPedida"]]});
 
             var listaTarefasTodas = "";
-            var topoTarefas = "<th>Nome do aluno............................</th>";
+            var topoTarefas = '<th class="alunoNr" >Nr</th><th class="alunoNm" >Nome do aluno</th><th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
                 topoTarefas = topoTarefas 
@@ -34,29 +34,46 @@ module.exports = {
                 + '">' + dataOk(tarefas[indexTr].dataPedida) + '</th>'
             });   
             for (var i1 = 0; i1 < (alunos.length) ;i1++) {
-                listaTarefasTodas = listaTarefasTodas + '<tr><td class="nomeNrNota"><div class="nomeNr" id="idA' 
-                + alunos[i1].id.toString().padStart(2, '0') + '">'
-                + alunos[i1].numero.toString().padStart(2, '0') + ' - ' 
-                + alunos[i1].nome+'</div><div class="mediaTr'
-                + alunos[i1].id.toString().padStart(2, '0') +'">00</div><div class="totalTr'
-                + alunos[i1].id.toString().padStart(2, '0') +'">00</div></td>';
+                var mediaAluno = 0;
+                var tarefasEntregues = 0;
+                var totalNotas = 0;
+                var tarefasPorAluno = "";
                 for (var i2 = 0; i2 < (tarefas.length); i2++) {
                     const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: { idAluno: alunos[i1].id, idTarefa: tarefas[i2].id } });
                     if (tarefasAluno.length > 0) {
-                        listaTarefasTodas = listaTarefasTodas 
+                        tarefasPorAluno = tarefasPorAluno 
                         + '<td><button class="btTarefa btComTr" name= "btTarefa" id= "A' 
                         + alunos[i1].id.toString().padStart(2, '0') + 'T' + tarefas[i2].id.toString().padStart(2, '0') 
                         + 'i' + tarefasAluno[0].id.toString().padStart(4, '0') + 'x">'
                         + dataOk(tarefasAluno[0].dataEntrega) + ' [ '+ tarefasAluno[0].conceito +' ]</button></td>';  
+                        tarefasEntregues++;
+                        totalNotas = totalNotas + tarefasAluno[0].conceito;
                     }
                     else {
-                        listaTarefasTodas = listaTarefasTodas 
+                        tarefasPorAluno = tarefasPorAluno 
                         + '<td><button class="btTarefa btSemTr" name= "btTarefa" id= "A' 
                         + alunos[i1].id.toString().padStart(2, '0') + 'T' + tarefas[i2].id.toString().padStart(2, '0') + 'i0000x">'
                         + ' Nada Entregue </button></td>';  
                     };
                 };
-                listaTarefasTodas = listaTarefasTodas + '</tr>';
+                mediaAluno = totalNotas / tarefasEntregues;
+                if ( isNaN(mediaAluno) ) { 
+                    mediaAluno = 0 
+                } else {
+                    mediaAluno = mediaAluno.toFixed(1);
+                };
+                
+                var tarefasInicio = '<tr>' 
+                + '<td class="alunoNr" id="idANr' + alunos[i1].id.toString().padStart(2, '0') + '">'
+                + alunos[i1].numero.toString().padStart(2, '0') +'</td>' 
+                + '<td class="alunoNm" id="idANm' + alunos[i1].id.toString().padStart(2, '0') + '">'
+                + alunos[i1].nome+'</td>' 
+                + '<td class="totalTr" id="totalTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
+                + tarefasEntregues + '</td>'
+                + '<td class="mediaTr" id="mediaTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
+                + mediaAluno + '</td>';
+                tarefasPorAluno = tarefasInicio + tarefasPorAluno;
+                listaTarefasTodas = listaTarefasTodas + tarefasPorAluno + '</tr>';
             };
             return res.render('tabelaAlunosTarefas', {
                 dadosGerais: listaTarefasTodas,
