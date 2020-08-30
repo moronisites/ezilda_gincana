@@ -9,6 +9,7 @@
 const TarefaAluno = require('../modelos/mdTarefaAluno');
 const Aluno = require('../modelos/mdAluno');
 const Tarefa = require('../modelos/mdTarefa');
+const Turma = require('../modelos/mdTurma');
 
 
 module.exports = {
@@ -21,12 +22,14 @@ module.exports = {
 	            return date.split('-').reverse().join('/');
             }
             // dica: numero = 5 -> numero.toString().padStart(2, '0') -> 05
+            const turma = await Turma.findAll({raw: true, where: {id: busca}}); 
+            var turmaAtual = turma[0].turma;
 
             const alunos = await Aluno.findAll({raw: true, where: {idTurma: busca}});
             const tarefas = await Tarefa.findAll({raw: true, where: {idTurma: busca}, order: [["dataPedida"]]});
 
             var listaTarefasTodas = "";
-            var topoTarefas = '<th class="alunoNr" >Nr</th><th class="alunoNm" >Nome do aluno</th><th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
+            var topoTarefas = '<div class="alunoNmNrNt"><th class="alunoNr" >Nr</th><th class="alunoNm" >Nome do aluno</th><th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th></div>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
                 topoTarefas = topoTarefas 
@@ -78,6 +81,7 @@ module.exports = {
             return res.render('tabelaAlunosTarefas', {
                 dadosGerais: listaTarefasTodas,
                 topoTabela: topoTarefas,
+                turmaTarefas: turmaAtual,
             });
             
         } catch (error) {

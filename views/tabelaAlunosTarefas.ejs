@@ -13,7 +13,21 @@
 </head>
 
 <body>
-
+  
+  <!-- --------------------------------------------------------------- -->
+  <!-- Apresentação da tabela conforme dados recebidos em              -->
+  <!-- topoTabela e dadosGerais                                        -->
+  <h1>Listagem dos Alunos da turma: <%= turmaTarefas %></h1>
+  <table>
+    <thead>
+      <tr><%- topoTabela %></tr>
+    </thead>
+    <tbody>
+      <%- dadosGerais %>
+    </tbody>
+  </table>
+  <!-- --------------------------------------------------------------- -->
+  
   <!-- --------------------------------------------------------------- -->
   <!-- modal para entrada dos dados da entrega da tarefa               -->
   <!--                                                                 -->
@@ -40,21 +54,6 @@
   <!-- --------------------------------------------------------------- -->
  
  
-  
-  <!-- --------------------------------------------------------------- -->
-  <!-- Apresentação da tabela conforme dados recebidos em              -->
-  <!-- topoTabela e dadosGerais                                        -->
-  <h1>Listagem dos Alunos na Umbler</h1>
-  <table>
-    <thead>
-      <tr><%- topoTabela %></tr>
-    </thead>
-    <tbody>
-      <%- dadosGerais %>
-    </tbody>
-  </table>
-  <!-- --------------------------------------------------------------- -->
-  
 
   <script>
   

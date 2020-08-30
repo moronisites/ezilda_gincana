@@ -15,50 +15,46 @@ a {
 	justify-content: space-around;
 }
 
-.mediaTr {
+.alunoNmNrNt{
 	font-family:Arial;
-	font-size:15px;
 	font-weight:bold;
 	text-decoration:none;
-	display: inline-block;	
+	display: inline-block;
 	padding:5px 5px;
+	width: 220px;
+	height: 25px;
+	max-height: 25px;
+	
+}
+
+.alunoNr {
+	font-size:12px;
+	font-weight:bold;
+	width: 20px;
+	height: 25px;
+	max-height: 25px;
+}
+
+.alunoNm {
+	font-size:10px;
+	width: 130px;
+	height: 25px;
+	max-height: 25px;
+}
+
+.mediaTr {
+	font-size:15px;
+	font-weight:bold;
+	color: #ce1f00;
 	width: 30px;
 	max-height: 25px;
 }
 
 .totalTr {
-	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	text-decoration:none;
-	display: inline-block;
-	color: #3700ce;
-	padding:5px 5px;
+	color: #033363;
 	width: 30px;
-	max-height: 25px;
-}
-
-.alunoNm {
-	font-family:Arial;
-	font-size:10px;
-	font-weight:bold;
-	text-decoration:none;
-	display: inline-block;
-	padding:5px 5px;
-	width: 120px;
-	height: 25px;
-	max-height: 25px;
-}
-
-.alunoNr {
-	font-family:Arial;
-	font-size:12px;
-	font-weight:bold;
-	text-decoration:none;
-	display: inline-block;
-	padding:5px 5px;
-	width: 20px;
-	height: 25px;
 	max-height: 25px;
 }
 
