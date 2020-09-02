@@ -7,6 +7,29 @@ a {
   color: #00B7FF;
 }
 
+.linhaClara {
+	/*font-family: Verdana, Geneva, sans-serif;
+	border-collapse: collapse;
+	padding: 3px 2px;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;*/
+	border: 0;
+  	border-top: 1px solid #000;
+	text-align: left;
+	background: #cc5ddb;
+}
+
+.linhaEscura {
+	/*font-family: Verdana, Geneva, sans-serif;
+	border-collapse: collapse;
+	padding: 3px 2px;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;*/
+	border: 0;
+  	border-top: 1px solid #000;
+	text-align: left;
+	background: #adb8c4;
+}
 
 .alinhaLinha{
 	display: flex;

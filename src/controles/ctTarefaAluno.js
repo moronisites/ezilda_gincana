@@ -36,6 +36,7 @@ module.exports = {
                 + '<th id="idT' + tarefas[indexTr].id.toString().padStart(2, '0') 
                 + '">' + dataOk(tarefas[indexTr].dataPedida) + '</th>'
             });   
+            var tarefaLinha = "linhaClara";
             for (var i1 = 0; i1 < (alunos.length) ;i1++) {
                 var mediaAluno = 0;
                 var tarefasEntregues = 0;
@@ -63,10 +64,10 @@ module.exports = {
                 if ( isNaN(mediaAluno) ) { 
                     mediaAluno = 0 
                 } else {
-                    mediaAluno = mediaAluno.toFixed(1);
+                    mediaAluno = parseFloat(mediaAluno.toFixed(1)); // converte em float e fixa 1 casa decimal
                 };
                 
-                var tarefasInicio = '<tr>' 
+                var tarefasInicio = '<tr class="'+ tarefaLinha + '">' 
                 + '<td class="alunoNr" id="idANr' + alunos[i1].id.toString().padStart(2, '0') + '">'
                 + alunos[i1].numero.toString().padStart(2, '0') +'</td>' 
                 + '<td class="alunoNm" id="idANm' + alunos[i1].id.toString().padStart(2, '0') + '">'
@@ -77,6 +78,11 @@ module.exports = {
                 + mediaAluno + '</td>';
                 tarefasPorAluno = tarefasInicio + tarefasPorAluno;
                 listaTarefasTodas = listaTarefasTodas + tarefasPorAluno + '</tr>';
+                if (tarefaLinha == "linhaClara"){
+                    tarefaLinha = "linhaEscura";
+                } else {
+                    tarefaLinha = "linhaClara";
+                }
             };
             return res.render('tabelaAlunosTarefas', {
                 dadosGerais: listaTarefasTodas,
