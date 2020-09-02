@@ -29,7 +29,7 @@ module.exports = {
             const tarefas = await Tarefa.findAll({raw: true, where: {idTurma: busca}, order: [["dataPedida"]]});
 
             var listaTarefasTodas = "";
-            var topoTarefas = '<div class="alunoNmNrNt"><th class="alunoNr" >Nr</th><th class="alunoNm" >Nome do aluno</th><th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th></div>';
+            var topoTarefas = '<th class="alunoNr" >Nr</th><th class="alunoNm" >Nome do aluno</th><th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
                 topoTarefas = topoTarefas 
@@ -46,18 +46,18 @@ module.exports = {
                     const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: { idAluno: alunos[i1].id, idTarefa: tarefas[i2].id } });
                     if (tarefasAluno.length > 0) {
                         tarefasPorAluno = tarefasPorAluno 
-                        + '<td><button class="btTarefa btComTr" name= "btTarefa" id= "A' 
+                        + '<td><text class="btTarefa btComTr" name= "btTarefa" id= "A' 
                         + alunos[i1].id.toString().padStart(2, '0') + 'T' + tarefas[i2].id.toString().padStart(2, '0') 
                         + 'i' + tarefasAluno[0].id.toString().padStart(4, '0') + 'x">'
-                        + dataOk(tarefasAluno[0].dataEntrega) + ' [ '+ tarefasAluno[0].conceito +' ]</button></td>';  
+                        + dataOk(tarefasAluno[0].dataEntrega) + ' [ '+ tarefasAluno[0].conceito +' ]</text></td>';  
                         tarefasEntregues++;
                         totalNotas = totalNotas + tarefasAluno[0].conceito;
                     }
                     else {
                         tarefasPorAluno = tarefasPorAluno 
-                        + '<td><button class="btTarefa btSemTr" name= "btTarefa" id= "A' 
+                        + '<td><text class="btTarefa btSemTr" name= "btTarefa" id= "A' 
                         + alunos[i1].id.toString().padStart(2, '0') + 'T' + tarefas[i2].id.toString().padStart(2, '0') + 'i0000x">'
-                        + ' Nada Entregue </button></td>';  
+                        + ' Não Entregue </text></td>';  
                     };
                 };
                 mediaAluno = totalNotas / tarefasEntregues;

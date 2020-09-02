@@ -8,7 +8,9 @@
 
 
   <link rel='stylesheet' href="../public/stylesheets/style.css" />
+  <link rel='stylesheet' href="../node_modules/bootstrap/dist/css/bootstrap.css" />
   <script src="/public/javascripts/jquery-3.5.1.min.js"></script>   
+  
   
 </head>
 
@@ -39,8 +41,24 @@
         <label style="line-height:0;" >Entrega: </label>                             
         <input type="date" class="form-control imput1" id="dataTarefaAluno">
         <br>
-        <label style="line-height:0;" >Nota..: </label>                         
-        <input type="text" label="Nota" class="s" id="conceitoTarefaAluno" name="conceito">
+        <!--<label style="line-height:0;" >Nota..: </label>                         
+        <input type="text" label="Nota" class="s"  name="xconceito">-->
+        
+        <p>Conceito:<br>
+         <select id="conceitoTarefaAluno" class="form-control" name="conceito">
+          <option>   </option>
+          <option value="1">1 - Inválido</option>
+          <option value="2">2 - Péssimo</option>
+          <option value="3">3 - Muito Ruim</option>
+          <option value="4">4 - Fraco</option>
+          <option value="5">5 - Regular</option>
+          <option value="6">6 - Bom</option>
+          <option value="7">7 - Muito Bom</option>
+          <option value="8">8 - Ótimo</option>
+          <option value="9">9 - Exelente</option>
+          <option value="10">10 - Perfeito</option>
+        </select>
+    
       
       <div class="alinhaLinha">
         <button id="btLimpa" class="btPqBase btVermelho excluiTarefa">Limpar</button>
@@ -93,12 +111,14 @@
         document.getElementById(alunoidElement).innerText
       document.getElementById("dataTarefa").innerText = 
         document.getElementById(tarefaDataElement).innerText
-      if (textox.match("Nada")) {
+      if (textox.match("Entregue")) {
         document.getElementById("dataTarefaAluno").value =" Não Entregou ";
         document.getElementById("conceitoTarefaAluno").value ="";
       } else {
         document.getElementById("dataTarefaAluno").value = toDate(textox.substr(0,10));
-        document.getElementById("conceitoTarefaAluno").value = textox.substr(13,2);
+        document.getElementById("conceitoTarefaAluno").value = textox.substr(13,2).trim();
+        console.log("-",textox.substr(13,2).trim(),"-");
+//        document.getElementById("conceitoTarefaAluno").value = textox.substr(13,2);
       }
       document.getElementById("modal-tarefa").classList.add("mostrar");
     }
