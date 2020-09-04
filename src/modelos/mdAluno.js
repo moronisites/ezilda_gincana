@@ -19,6 +19,7 @@ class Aluno extends Model {
     super.init({
       nome: DataTypes.STRING(55),
       numero: DataTypes.INTEGER,
+      turma: DataTypes.STRING(2), 
     }, {
       freezeTableName: true,
       tableName: 'alunos',

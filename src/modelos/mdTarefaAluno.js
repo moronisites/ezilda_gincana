@@ -44,3 +44,25 @@ class TarefaAluno extends Model {
 }
 
 module.exports = TarefaAluno;
+
+// A ordem em que a associação é definida é relevante. Em outras palavras, a ordem é importante, para os quatro casos.
+//  Em todos os exemplos acima, Aé chamado de modelo de origem e Bé chamado de modelo de destino . 
+//  Essa terminologia é importante.
+
+// A A.hasOne(B)associação significa que existe um relacionamento Um para Um entre Ae B, 
+// com a chave estrangeira sendo definida no modelo de destino ( B).
+
+// A A.belongsTo(B)associação significa que existe um relacionamento Um para Um entre A e B, 
+// com a chave estrangeira sendo definida no modelo de origem ( A).
+
+// A A.hasMany(B)associação significa que existe um relacionamento Um-para-Muitos entre A e B, 
+// com a chave estrangeira sendo definida no modelo de destino ( B).
+
+// Essas três chamadas farão com que o Sequelize adicione automaticamente chaves estrangeiras 
+// aos modelos apropriados (a menos que já estejam presentes).
+
+// A A.belongsToMany(B, { through: 'C' })associação significa que existe um relacionamento 
+// muitos-para-muitos entre Ae B, usando a tabela Ccomo tabela de junção , 
+// que terá as chaves estrangeiras ( aIde bId, por exemplo). 
+// Sequelize irá criar automaticamente este modelo C(a menos que já exista) 
+// e definir as chaves estrangeiras apropriadas nele.

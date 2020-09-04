@@ -7,6 +7,17 @@ a {
   color: #00B7FF;
 }
 
+.dataTarefaTurma{
+
+	font-weight:bold;
+	color: #0f0536;
+}
+
+.dataTarefaTurma:hover{
+	color: #528ecc;
+	background-color:#0f0536;
+}
+
 .linhaClara {
 	/*font-family: Verdana, Geneva, sans-serif;
 	border-collapse: collapse;

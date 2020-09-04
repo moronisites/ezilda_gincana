@@ -29,11 +29,14 @@ module.exports = {
             const tarefas = await Tarefa.findAll({raw: true, where: {idTurma: busca}, order: [["dataPedida"]]});
 
             var listaTarefasTodas = "";
-            var topoTarefas = '<th class="alunoNr" >Nr</th><th class="alunoNm" >Nome do aluno</th><th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
+            var topoTarefas = '<th class="alunoNr" >Nr</th>'
+            +'<th class="alunoNm" >Nome do aluno</th>'
+            +'<th class="alunoNr" >Tr.</th>'
+            +'<th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
                 topoTarefas = topoTarefas 
-                + '<th id="idT' + tarefas[indexTr].id.toString().padStart(2, '0') 
+                + '<th class="dataTarefaTurma" id="idT' + tarefas[indexTr].id.toString().padStart(2, '0') 
                 + '">' + dataOk(tarefas[indexTr].dataPedida) + '</th>'
             });   
             var tarefaLinha = "linhaClara";
@@ -72,6 +75,9 @@ module.exports = {
                 + alunos[i1].numero.toString().padStart(2, '0') +'</td>' 
                 + '<td class="alunoNm" id="idANm' + alunos[i1].id.toString().padStart(2, '0') + '">'
                 + alunos[i1].nome+'</td>' 
+
+                + '<td class="alunoNr">' + alunos[i1].turma+'</td>' 
+
                 + '<td class="totalTr" id="totalTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
                 + tarefasEntregues + '</td>'
                 + '<td class="mediaTr" id="mediaTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 

@@ -95,8 +95,7 @@
         abreTarefaAluno(textox,e.target.id);
       });
     }
-    
-
+    // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // Função para mostrar o modal de entrada de data e conceito
     // quando o botão referente a tarefa na tabela for clicado
@@ -123,8 +122,6 @@
       document.getElementById("modal-tarefa").classList.add("mostrar");
     }
     // -------------------------------------------------------------------------
-
-
     // -------------------------------------------------------------------------
     // Função para fechar o modal de entrada de data e conceito
     //
@@ -132,6 +129,34 @@
       document.getElementById("modal-tarefa").classList.remove("mostrar");
     }
     // -------------------------------------------------------------------------
+
+
+    
+    // -------------------------------------------------------------------------
+    // Função para incluir o evento onClick em todos os botoes da classe dataTarefa
+    //
+    const botaoDt = document.querySelectorAll('.dataTarefaTurma');
+    for (var i = 0; i < botaoDt.length; i++) {
+      const textoDt = document.getElementById(botaoDt[i].id).innerText;
+      // botao[i].classList.add('red'); para adicionar outras classes
+      botaoDt[i].addEventListener("click",(e) => {
+        abreTarefa(textoDt,e.target.id);
+      });
+    }
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // Função para mostrar o modal de entrada de data e conceito
+    // quando o botão referente a tarefa na tabela for clicado
+    //
+    function abreTarefa(textoDt,btId){
+      tarefaid = parseInt(btId.substr(1,2), 10);
+      alert(textoDt +" - " + btId);
+    return textoDt  
+    }
+    // -------------------------------------------------------------------------
+    
+
+
 
     // -------------------------------------------------------------------------
     // Função para alterar formato da data

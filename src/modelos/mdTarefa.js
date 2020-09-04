@@ -33,11 +33,15 @@ class Tarefa extends Model {
   // você está chamando o método, 
   // hasOne adiciona na tabela que é dada como argumento.
 
-//  static associate(models) {
-//    this.belongsTo(Turma, {
-//      foreignKey: "idTurma"
-//    });
-//  }
+  static associate(models) {
+    this.belongsTo(Turma, {
+      foreignKey: "idTurma"
+    });
+    this.hasMany(TarefaAluno, {
+      foreignKey: "idTarefa"
+    });
+    
+  }
 
 }
 
