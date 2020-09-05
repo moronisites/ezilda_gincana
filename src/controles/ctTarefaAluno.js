@@ -31,7 +31,9 @@ module.exports = {
             var listaTarefasTodas = "";
             var topoTarefas = '<th class="alunoNr" >Nr</th>'
             +'<th class="alunoNm" >Nome do aluno</th>'
-            +'<th class="alunoNr" >Tr.</th>'
+            //---- turma -------------------------------
+            //+'<th class="alunoNr" >Tr.</th>'
+            //---- turma -------------------------------
             +'<th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
@@ -75,9 +77,9 @@ module.exports = {
                 + alunos[i1].numero.toString().padStart(2, '0') +'</td>' 
                 + '<td class="alunoNm" id="idANm' + alunos[i1].id.toString().padStart(2, '0') + '">'
                 + alunos[i1].nome+'</td>' 
-
-                + '<td class="alunoNr">' + alunos[i1].turma+'</td>' 
-
+                //---- turma -------------------------------
+                //+ '<td class="alunoNr">' + alunos[i1].turma+'</td>' 
+                //---- turma -------------------------------
                 + '<td class="totalTr" id="totalTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
                 + tarefasEntregues + '</td>'
                 + '<td class="mediaTr" id="mediaTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 

@@ -273,3 +273,52 @@ a {
 .mostrar .modalTarefaAluno {
 	animation: modalAbre .1s;
 }
+
+
+
+.linhaSerie {
+    color: #FFF;
+    /* text-align: justify; */
+    text-align: center;
+    padding: 10px;
+}
+
+.btTurmaBase {
+    
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 10px;
+	text-decoration:none;
+    width: 130px;
+    height: 40px;
+    box-shadow:inset 0px 0px 0px 2px #082947;
+
+}
+
+.btTurmaBase:hover {
+	background:linear-gradient(to bottom, #e9ece7 5%, #f3c443 100%);
+	background-color:#ffffff;
+}
+
+
+
+.btTurmaE1 {
+    background-color: #95b3d7;
+}
+
+.btTurmaE2 {
+    background-color: #93cddd;
+}
+
+.btTurmaE3 {
+    background-color: #c3d69b;
+}
+
+.btTurmaE5 {
+    background-color: #fac090;
+}
+

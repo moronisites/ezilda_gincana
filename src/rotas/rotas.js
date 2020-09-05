@@ -31,6 +31,8 @@ rotas.post("/tarefaAluno", ctTarefaAluno.tarefaAlunoNova);
 rotas.post("/tarefaAluno/:id", ctTarefaAluno.tarefaAlunoEdita);
 rotas.delete("/tarefaAluno/:id", ctTarefaAluno.tarefaAlunoExclui);
 
+rotas.get("/", (req, res) => {res.render('turmas')});
+
 //rotas.get("/tarefas", ctTarefaAluno.gravaTarefa('2020-01-01',7,'observa',21,8));
 
 
