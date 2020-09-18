@@ -4,11 +4,13 @@ body {
 }
 
 a {
-  color: #00B7FF;
-}
+	color: #00B7FF;
+  }
+  
+  
+/* -------------- Listagem de alunos e tarefas por turma ---------------- */
 
-.dataTarefaTurma{
-
+.dataTarefaTurma{  
 	font-weight:bold;
 	color: #0f0536;
 }
@@ -19,11 +21,6 @@ a {
 }
 
 .linhaClara {
-	/*font-family: Verdana, Geneva, sans-serif;
-	border-collapse: collapse;
-	padding: 3px 2px;
-	border-top: 1px solid #000000;
-	border-bottom: 1px solid #000000;*/
 	border: 0;
   	border-top: 1px solid #000;
 	text-align: left;
@@ -31,54 +28,10 @@ a {
 }
 
 .linhaEscura {
-	/*font-family: Verdana, Geneva, sans-serif;
-	border-collapse: collapse;
-	padding: 3px 2px;
-	border-top: 1px solid #000000;
-	border-bottom: 1px solid #000000;*/
 	border: 0;
   	border-top: 1px solid #000;
 	text-align: left;
 	background: #5990cc;
-}
-
-.alinhaLinha{
-	display: flex;
-	padding: 20px;
-	align-items: flex-end;
-	justify-content: space-around;
-}
-
-.btPqBase {
-	border-radius:6px;
-	display:inline-block;
-	cursor:pointer;
-	font-family:Arial;
-	font-size:12px;
-	font-weight:bold;
-	padding:4px 4px;
-	text-decoration:none;
-  width: 70px;
-  height: 30px;
-}
-
-.btPqBase:active {
-	position:relative;
-	top:2px;
-	left:2px;
-}
-
-.btBase {
-	border-radius:6px;
-	display:inline-block;
-	cursor:pointer;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:10px 10px;
-	text-decoration:none;
-  width: 150px;
-  height: 40px;
 }
 
 .alunoNmNrNt{
@@ -90,7 +43,6 @@ a {
 	width: 240px;
 	height: 25px;
 	max-height: 25px;
-	
 }
 
 .alunoNr {
@@ -133,21 +85,12 @@ a {
 
 	padding:5px 5px;
 	text-decoration:none;
-/*  border-radius:6px;
-*/
-  width: 100px;
-  height: 25px;
+    width: 100px;
+    height: 25px;
 
 }
 
 .btComTr{
-/*
-	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-	background-color:#79bbff;
-	border:2px solid #84bbf3;
-	text-shadow:0px 1px 0px #528ecc;
-*/
 	color:#0f0536;
 }
 
@@ -157,18 +100,61 @@ a {
 }
 
 .btSemTr{
-/*
-	box-shadow:inset 0px 1px 0px 0px #ebe3a9;
-	background:linear-gradient(to bottom, #ecead9 5%, #70685b 100%);
-	background-color:#ffec64;
-	border:1px solid #36332e;
-	text-shadow:0px 1px 0px #8b8b88;	
-*/
 	color:#aa0000;
 }
 .btSemTr:hover {
 	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
 	background-color:#ffab23;
+}
+
+
+/* ---------------------------------------------------------------------- */
+
+/* --------------- modal para a entrada da entrega de tarefa ------------ */
+.textoEntrega{
+	font-family:Arial;
+	font-size:10px;
+	font-weight:bold;
+	/*line-height:0; */
+}
+
+.alinhaLinha{
+	display: flex;
+	padding: 10px;
+	align-items: flex-end;
+	justify-content: space-around;
+}
+
+.btPqBase {
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px;
+	text-decoration:none;
+  width: 70px;
+  height: 30px;
+}
+
+.btPqBase:active {
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+.btBase {
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 10px;
+	text-decoration:none;
+  width: 150px;
+  height: 40px;
 }
 
 .btBase:active {
@@ -322,3 +308,17 @@ a {
     background-color: #fac090;
 }
 
+/*  btComTr
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border:2px solid #84bbf3;
+	text-shadow:0px 1px 0px #528ecc;
+*/
+/*  btSemTr
+	box-shadow:inset 0px 1px 0px 0px #ebe3a9;
+	background:linear-gradient(to bottom, #ecead9 5%, #70685b 100%);
+	background-color:#ffec64;
+	border:1px solid #36332e;
+	text-shadow:0px 1px 0px #8b8b88;	
+*/
