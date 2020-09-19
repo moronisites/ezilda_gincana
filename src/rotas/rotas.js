@@ -11,6 +11,7 @@ const ctAluno = require("../controles/ctAluno");
 const ctTurma = require("../controles/ctTurma");
 const ctAula = require("../controles/ctAula");
 const ctTarefaAluno = require("../controles/ctTarefaAluno");
+const ctTarefa = require('../controles/ctTarefa');
 
 const rotas = express.Router();
 
@@ -30,6 +31,12 @@ rotas.get("/tarefasAlunos/:id", ctTarefaAluno.listaTarefasAlunos);
 rotas.post("/tarefaAluno", ctTarefaAluno.tarefaAlunoNova);
 rotas.post("/tarefaAluno/:id", ctTarefaAluno.tarefaAlunoEdita);
 rotas.delete("/tarefaAluno/:id", ctTarefaAluno.tarefaAlunoExclui);
+
+rotas.get("/tarefas/", ctTarefa.tarefasLista);
+rotas.get("/tarefa/:id", ctTarefa.tarefaMostra);
+rotas.post("/tarefaNova", ctTarefa.tarefaNova);
+rotas.post("/tarefaEdita/:id", ctTarefa.tarefaEdita);
+rotas.delete("/tarefaExclui/:id", ctTarefa.tarefaExclui);
 
 rotas.get("/", (req, res) => {res.render('turmas')});
 

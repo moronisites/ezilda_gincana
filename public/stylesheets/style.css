@@ -11,6 +11,7 @@ a {
 /* -------------- Listagem de alunos e tarefas por turma ---------------- */
 
 .dataTarefaTurma{  
+	cursor:pointer;
 	font-weight:bold;
 	color: #0f0536;
 }
@@ -76,6 +77,14 @@ a {
 	max-height: 25px;
 }
 
+.pontosTr {
+	font-size:15px;
+	font-weight:bold;
+	color: #1867b6;
+	width: 30px;
+	max-height: 25px;
+}
+
 .btTarefa {
 	display:inline-block;
 	cursor:pointer;
@@ -115,6 +124,7 @@ a {
 	font-family:Arial;
 	font-size:10px;
 	font-weight:bold;
+	text-align: center;
 	/*line-height:0; */
 }
 
@@ -248,12 +258,13 @@ a {
 	background: white;
 	width: 20%;
 	height: 55%;
-	min-height: 200px;
+	min-height: 250px;
 	min-width: 200px;
-	padding: 10px;
+	padding: 5px;
 	border: 5px solid #378de5;
 	box-shadow: 0,0,0,10px #63B8EE;
 	position: relative;
+	font-size:10px;	
 }
 
 .mostrar .modalTarefaAluno {
@@ -308,6 +319,42 @@ a {
     background-color: #fac090;
 }
 
+.formulario1 {
+    display: block;
+    width: 100%;
+    padding: 0.3rem 0.3rem;
+    font-size: .8rem;
+    line-height: 1.25;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.formulario1:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: none;
+}
+
+.formulario1::placeholder {
+    color: #868e96;
+    opacity: 1;
+}
+
+.formulario1:disabled,
+.formulario1[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.formulario1:hover{
+    background-color: #809dbb;
+    border-color: #001f41;
+}
 /*  btComTr
 	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
 	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);

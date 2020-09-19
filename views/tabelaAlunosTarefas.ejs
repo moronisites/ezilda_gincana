@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listagem de Alunos</title>
 
-
   <link rel='stylesheet' href="../public/stylesheets/style.css" />
   <link rel='stylesheet' href="../node_modules/bootstrap/dist/css/bootstrap.css" />
   <script src="/public/javascripts/jquery-3.5.1.min.js"></script>   
-  
   
 </head>
 
@@ -31,21 +29,21 @@
   <!-- --------------------------------------------------------------- -->
   
   <!-- --------------------------------------------------------------- -->
-  <!-- modal para entrada dos dados da entrega da tarefa               -->
+  <!-- modal para entrada/visualização dos dados da entrega da tarefa  -->
   <!--                                                                 -->
-  <div id="modal-tarefa" class="modal-container">
-    <div class="modalTarefaAluno textoEntrega">
+  <div id="modal-tarefaAluno" class="modal-container">
+    <div class="modalTarefaAluno">
 
-        <p id="alunoTarefa">--------</p>
-        <p id="dataTarefa">---------</p>
+        <p id="alunoTarefa" class="textoEntrega">--------</p>
+        <p id="dataTarefa" class="textoEntrega">---------</p>
         <label>Entrega: </label>                             
-        <input type="date" class="form-control imput1" id="dataTarefaAluno">
+        <input type="date" class="formulario1" id="dataTarefaAluno">
     
         <!--<label style="line-height:0;" >Nota..: </label>                         
         <input type="text" label="Nota" class="s"  name="xconceito">-->
         
         <label>Conceito:</label>
-         <select id="conceitoTarefaAluno" class="form-control" name="conceito">
+         <select id="conceitoTarefaAluno" class="formulario1" name="conceito">
           <option value="1">1 - Inválido</option>
           <option value="2">2 - Péssimo</option>
           <option value="3">3 - Muito Ruim</option>
@@ -70,7 +68,6 @@
   </div>
   <!-- --------------------------------------------------------------- -->
  
- 
 
   <script>
   
@@ -82,6 +79,23 @@
     var entregaid = 0;
     // -------------------------------------------------------------------------
 
+    // -------------------------------------------------------------------------
+    // Função para alterar formato da data de yyyy-mm-dd para dd/mm/yyyy
+    //
+    function toDate(dateStr) {
+      // var parts = dateStr.split("/");
+      // return (parts[2] +"-" + parts[1] +"-" + parts[0]);
+      return dateStr.split('/').reverse().join('-');
+    }
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Função para alterar formato da data do dd/mm/yyyy para yyyy-mm-dd
+    //
+    function dateOk(date){	
+	    return date.split('-').reverse().join('/');
+    }
+    // -------------------------------------------------------------------------
 
     // -------------------------------------------------------------------------
     // Função para incluir o evento onClick em todos os botoes da classe btTarefa
@@ -95,6 +109,7 @@
       });
     }
     // -------------------------------------------------------------------------
+
     // -------------------------------------------------------------------------
     // Função para mostrar o modal de entrada de data e conceito
     // quando o botão referente a tarefa na tabela for clicado
@@ -118,54 +133,56 @@
         console.log("-",textox.substr(13,2).trim(),"-");
 //        document.getElementById("conceitoTarefaAluno").value = textox.substr(13,2);
       }
-      document.getElementById("modal-tarefa").classList.add("mostrar");
+      document.getElementById("modal-tarefaAluno").classList.add("mostrar");
     }
     // -------------------------------------------------------------------------
+    
     // -------------------------------------------------------------------------
     // Função para fechar o modal de entrada de data e conceito
     //
     function fechaTarefaAluno (){
-      document.getElementById("modal-tarefa").classList.remove("mostrar");
+      document.getElementById("modal-tarefaAluno").classList.remove("mostrar");
     }
     // -------------------------------------------------------------------------
 
-
     
     // -------------------------------------------------------------------------
-    // Função para incluir o evento onClick em todos os botoes da classe dataTarefa
+    // Função para incluir o evento onClick em todos os botoes da classe dataTarefaTurma
     //
     const botaoDt = document.querySelectorAll('.dataTarefaTurma');
     for (var i = 0; i < botaoDt.length; i++) {
       const textoDt = document.getElementById(botaoDt[i].id).innerText;
-      // botao[i].classList.add('red'); para adicionar outras classes
       botaoDt[i].addEventListener("click",(e) => {
         abreTarefa(textoDt,e.target.id);
       });
     }
     // -------------------------------------------------------------------------
+    
     // -------------------------------------------------------------------------
-    // Função para mostrar o modal de entrada de data e conceito
-    // quando o botão referente a tarefa na tabela for clicado
+    // Função para mostrar o modal de dados da tarefa
+    // quando a data referente a tarefa pedida for clicada
     //
     function abreTarefa(textoDt,btId){
-      tarefaid = parseInt(btId.substr(1,2), 10);
-      alert(textoDt +" - " + btId);
-    return textoDt  
+      tarefaid = parseInt(btId.substr(4,2), 10);
+      var url = '/tarefa/' + tarefaid;
+      $.ajax({
+        url: url, //selecionando o endereço que iremos acessar no backend
+        type: 'GET', //selecionando o tipo de requesição, PUT,GET,POST,DELETE
+        dataType: "json",//Tipo de dado que será enviado ao servidor
+        error: function(err){
+         //Em caso de erro
+          console.log(err);
+        }
+      }).done(function(tarefaVer){
+        alert(" dataPedida: " + dateOk(tarefaVer[0].dataPedida) + 
+              "\n OBS -------> " + tarefaVer[0].obs);
+      });
+      //  dataPedida,
+      //  descricao,
+      //  habilidade,
+      return textoDt  
     }
     // -------------------------------------------------------------------------
-    
-
-
-
-    // -------------------------------------------------------------------------
-    // Função para alterar formato da data
-    //
-    function toDate(dateStr) {
-      var parts = dateStr.split("/");
-      return (parts[2] +"-" + parts[1] +"-" + parts[0]);
-    }
-    // 
-
 
     // -------------------------------------------------------------------------
     // Função para gravar os dados da tarefa entregue
@@ -226,6 +243,7 @@
       });
     });
     // -------------------------------------------------------------------------
+
 
   </script>
 

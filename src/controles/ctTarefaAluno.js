@@ -34,7 +34,9 @@ module.exports = {
             //---- turma -------------------------------
             //+'<th class="alunoNr" >Tr.</th>'
             //---- turma -------------------------------
-            +'<th class="totalTr" >T.E.</th><th class="mediaTr">Med.</th>';
+            +'<th class="totalTr" >T.E.</th>'
+            +'<th class="pontosTr">Pts.</th>'
+            +'<th class="mediaTr">Med.</th>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
                 topoTarefas = topoTarefas 
@@ -71,6 +73,7 @@ module.exports = {
                 } else {
                     mediaAluno = parseFloat(mediaAluno.toFixed(1)); // converte em float e fixa 1 casa decimal
                 };
+                totalNotas = parseFloat(totalNotas.toFixed(1)); // converte em float e fixa 1 casa decimal
                 
                 var tarefasInicio = '<tr class="'+ tarefaLinha + '">' 
                 + '<td class="alunoNr" id="idANr' + alunos[i1].id.toString().padStart(2, '0') + '">'
@@ -82,6 +85,8 @@ module.exports = {
                 //---- turma -------------------------------
                 + '<td class="totalTr" id="totalTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
                 + tarefasEntregues + '</td>'
+                + '<td class="pontosTr" id="pontosTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
+                + totalNotas + '</td>'
                 + '<td class="mediaTr" id="mediaTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
                 + mediaAluno + '</td>';
                 tarefasPorAluno = tarefasInicio + tarefasPorAluno;
@@ -152,9 +157,9 @@ module.exports = {
             }, {where: { id: busca}} );
             return res.json(tarefasAlunor);
         } catch (error) {
-            console.log("aulas NAO Gravadas");
+            console.log("tarefa NAO Gravada");
             console.log(error);
-            return res.json("Erro ao gravar aulas");
+            return res.json("Erro ao gravar Tarefa");
         };
     },
 
@@ -165,9 +170,9 @@ module.exports = {
             const tarefasAlunor = await TarefaAluno.destroy({where: { id: busca}} );
             return res.json(tarefasAlunor);
         } catch (error) {
-            console.log("aulas NAO Gravadas");
+            console.log("tarefa NAO Excluida");
             console.log(error);
-            return res.json("Erro ao gravar aulas");
+            return res.json("Erro ao excluir tarefa");
         };
     },
       
