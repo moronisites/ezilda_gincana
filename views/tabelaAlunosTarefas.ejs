@@ -69,6 +69,49 @@
   <!-- --------------------------------------------------------------- -->
  
 
+  <!-- --------------------------------------------------------------- -->
+  <!-- modal para entrada/visualização dos dados da tarefa para a turma-->
+  <!--                                                                 -->
+  <div id="modal-tarefa" class="modal-container">
+    <div class="modalTarefa">
+
+      <label>Data da solicitação: </label>                             
+      <input type="date" class="formulario1" id="dataTarefaTurma">
+      <label>Data da solicitação: </label>                             
+      <input type="date" class="formulario1" id="dataTarefaTurma">
+      <label>Data da solicitação: </label>                             
+      <input type="date" class="formulario1" id="dataTarefaTurma">
+    
+        <!--<label style="line-height:0;" >Nota..: </label>                         
+        <input type="text" label="Nota" class="s"  name="xconceito">-->
+        
+        <label>Conceito:</label>
+         <select id="conceitoTarefaAluno" class="formulario1" name="conceito">
+          <option value="1">1 - Inválido</option>
+          <option value="2">2 - Péssimo</option>
+          <option value="3">3 - Muito Ruim</option>
+          <option value="4">4 - Fraco</option>
+          <option value="5">5 - Regular</option>
+          <option value="6">6 - Bom</option>
+          <option value="7">7 - Muito Bom</option>
+          <option value="8">8 - Ótimo</option>
+          <option value="9">9 - Exelente</option>
+          <option value="10">10 - Perfeito</option>
+        </select>
+    
+      
+      <div class="alinhaLinha">
+        <button id="btLimpa" class="btPqBase btVermelho excluiTarefa">Limpar</button>
+        <button id="btGrava" class="btPqBase btAzul editaAlteraTarefa">Gravar</button>
+        <button id="btCancela" class="btPqBase btVerde" 
+        onclick="fechaTarefaAluno()">Cancelar</button>
+        
+      </div>
+    </div>
+  </div>
+  <!-- --------------------------------------------------------------- -->
+ 
+
   <script>
   
     //--------------------------------------------------------------------------

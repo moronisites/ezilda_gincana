@@ -347,7 +347,7 @@ a {
 
 .formulario1:disabled,
 .formulario1[readonly] {
-    background-color: #e9ecef;
+    background-color: #cacaca;
     opacity: 1;
 }
 
