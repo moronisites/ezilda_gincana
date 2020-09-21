@@ -7,6 +7,7 @@
 'use strict'
 
 const Tarefa = require('../modelos/mdTarefa');
+const TarefaAluno = require('../modelos/mdTarefaAluno');
 
 module.exports = {
 
@@ -86,14 +87,22 @@ module.exports = {
     
     async tarefaExclui(req, res) {
         let busca = req.params.id;
-        try {
-            const tarefasEx = await Tarefa.destroy({where: { id: busca}} );
-            return res.json(tarefasEx);
-        } catch (error) {
-            console.log("tarefa NAO Excluida");
-            console.log(error);
-            return res.json("Erro ao excluir tarefa");
-        };
+        
+        const tarefasAluno = await TarefaAluno.findAll({ raw: true, where: { idTarefa: busca } });
+        if (tarefasAluno.length > 0) {
+            return res.status(400).send({ error: "temTarefa" });
+        } else {
+            try {
+                const tarefasEx = await Tarefa.destroy({where: { id: busca}} );
+                return res.json(tarefasEx);
+            } catch (error) {
+                console.log("tarefa NAO Excluida");
+                console.log(error);
+                return res.json("Erro ao excluir tarefa");
+            };
+                
+        }
+        
     },
 
 };

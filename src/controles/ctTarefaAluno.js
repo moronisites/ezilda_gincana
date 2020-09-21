@@ -23,7 +23,8 @@ module.exports = {
             }
             // dica: numero = 5 -> numero.toString().padStart(2, '0') -> 05
             const turma = await Turma.findAll({raw: true, where: {id: busca}}); 
-            var turmaAtual = turma[0].turma;
+
+            var turmaAtual = '<div id="idTurmaATual" title="' + busca.toString().padStart(5, '0') + '">Listagem da turma: ' +  turma[0].turma + '</div>'; 
 
             const alunos = await Aluno.findAll({raw: true, where: {idTurma: busca}});
             const tarefas = await Tarefa.findAll({raw: true, where: {idTurma: busca}, order: [["dataPedida"]]});
@@ -39,8 +40,10 @@ module.exports = {
             +'<th class="mediaTr">Med.</th>';
             
             tarefas.forEach((elementTr, indexTr, arrayTr) => { 
+                // cria um elemento "data" com id relativo a tarefa pedida a turma e o coloca no 
+                // cabeçalho da tabela de tarefas da turma => idTnnnnn                                               
                 topoTarefas = topoTarefas 
-                + '<th class="dataTarefaTurma" id="idT' + tarefas[indexTr].id.toString().padStart(2, '0') 
+                + '<th class="dataTarefaTurma" id="idT' + tarefas[indexTr].id.toString().padStart(5, '0') 
                 + '">' + dataOk(tarefas[indexTr].dataPedida) + '</th>'
             });   
             var tarefaLinha = "linhaClara";
@@ -54,8 +57,8 @@ module.exports = {
                     if (tarefasAluno.length > 0) {
                         tarefasPorAluno = tarefasPorAluno 
                         + '<td><text class="btTarefa btComTr" name= "btTarefa" id= "A' 
-                        + alunos[i1].id.toString().padStart(2, '0') + 'T' + tarefas[i2].id.toString().padStart(2, '0') 
-                        + 'i' + tarefasAluno[0].id.toString().padStart(4, '0') + 'x">'
+                        + alunos[i1].id.toString().padStart(5, '0') + 'T' + tarefas[i2].id.toString().padStart(5, '0') 
+                        + 'i' + tarefasAluno[0].id.toString().padStart(5, '0') + 'x">'
                         + dataOk(tarefasAluno[0].dataEntrega) + ' [ '+ tarefasAluno[0].conceito +' ]</text></td>';  
                         tarefasEntregues++;
                         totalNotas = totalNotas + tarefasAluno[0].conceito;
@@ -63,7 +66,7 @@ module.exports = {
                     else {
                         tarefasPorAluno = tarefasPorAluno 
                         + '<td><text class="btTarefa btSemTr" name= "btTarefa" id= "A' 
-                        + alunos[i1].id.toString().padStart(2, '0') + 'T' + tarefas[i2].id.toString().padStart(2, '0') + 'i0000x">'
+                        + alunos[i1].id.toString().padStart(5, '0') + 'T' + tarefas[i2].id.toString().padStart(5, '0') + 'i0000x">'
                         + ' Não Entregue </text></td>';  
                     };
                 };
@@ -76,18 +79,18 @@ module.exports = {
                 totalNotas = parseFloat(totalNotas.toFixed(1)); // converte em float e fixa 1 casa decimal
                 
                 var tarefasInicio = '<tr class="'+ tarefaLinha + '">' 
-                + '<td class="alunoNr" id="idANr' + alunos[i1].id.toString().padStart(2, '0') + '">'
+                + '<td class="alunoNr" id="idANr' + alunos[i1].id.toString().padStart(5, '0') + '">'
                 + alunos[i1].numero.toString().padStart(2, '0') +'</td>' 
-                + '<td class="alunoNm" id="idANm' + alunos[i1].id.toString().padStart(2, '0') + '">'
+                + '<td class="alunoNm" id="idANm' + alunos[i1].id.toString().padStart(5, '0') + '">'
                 + alunos[i1].nome+'</td>' 
                 //---- turma -------------------------------
                 //+ '<td class="alunoNr">' + alunos[i1].turma+'</td>' 
                 //---- turma -------------------------------
-                + '<td class="totalTr" id="totalTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
+                + '<td class="totalTr" id="totalTr' + alunos[i1].id.toString().padStart(5, '0') +'">' 
                 + tarefasEntregues + '</td>'
-                + '<td class="pontosTr" id="pontosTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
+                + '<td class="pontosTr" id="pontosTr' + alunos[i1].id.toString().padStart(5, '0') +'">' 
                 + totalNotas + '</td>'
-                + '<td class="mediaTr" id="mediaTr' + alunos[i1].id.toString().padStart(2, '0') +'">' 
+                + '<td class="mediaTr" id="mediaTr' + alunos[i1].id.toString().padStart(5, '0') +'">' 
                 + mediaAluno + '</td>';
                 tarefasPorAluno = tarefasInicio + tarefasPorAluno;
                 listaTarefasTodas = listaTarefasTodas + tarefasPorAluno + '</tr>';

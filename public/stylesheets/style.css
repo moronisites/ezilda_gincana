@@ -10,6 +10,13 @@ a {
   
 /* -------------- Listagem de alunos e tarefas por turma ---------------- */
 
+.textoTopo1{
+	color: #770303;
+	font-weight:bold;
+	text-align: left;
+	font-size:18px;
+}
+
 .dataTarefaTurma{  
 	cursor:pointer;
 	font-weight:bold;
@@ -140,11 +147,12 @@ a {
 	display:inline-block;
 	cursor:pointer;
 	font-family:Arial;
-	font-size:12px;
+	font-size:11px;
 	font-weight:bold;
-	padding:4px;
+	padding:2px;
+	margin: 4px;
 	text-decoration:none;
-  width: 70px;
+  width: 80px;
   height: 30px;
 }
 
@@ -268,6 +276,23 @@ a {
 }
 
 .mostrar .modalTarefaAluno {
+	animation: modalAbre .1s;
+}
+
+.modalTarefaTurma {
+	background: white;
+	width: 20%;
+	height: 55%;
+	min-height: 300px;
+	min-width: 200px;
+	padding: 5px;
+	border: 5px solid #378de5;
+	box-shadow: 0,0,0,10px #63B8EE;
+	position: relative;
+	font-size:10px;	
+}
+
+.mostrar .modalTarefaTurma {
 	animation: modalAbre .1s;
 }
 
