@@ -10,8 +10,39 @@
 const Aluno = require('../modelos/mdAluno');
 //const Tarefa = require('../modelos/mdTarefa');
 const TarefaAluno = require('../modelos/mdTarefaAluno');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = {
+
+    async listaAlunos(req, res) {
+        try {
+            const alunos = await Aluno.findAll({
+                raw: true,
+            });
+            return res.render('tabelaAlunosAll', {
+                dadosDosAlunos: alunos,
+            });
+        } catch (error) {
+            console.log("alunos NAO listados");
+            console.log(error);
+            return res.json("Erro ao listar alunos");
+        }
+    },
+
+    async listaAlunosNome(req, res) {
+        try {
+            let busca = '%'+ req.params.id + '%';
+            const alunos = await Aluno.findAll({ raw: true, where: { nome: { [Op.like]: busca } } });
+            return res.render('tabelaAlunosAll', {
+                dadosDosAlunos: alunos,
+            });
+        } catch (error) {
+            console.log("alunos NAO listados");
+            console.log(error);
+            return res.json("Erro ao listar alunos");
+        }
+    },
 
     async listaAlunosTurma(req, res) {
         try {

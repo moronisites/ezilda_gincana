@@ -7,7 +7,21 @@ a {
 	color: #00B7FF;
   }
   
-  
+  table {
+    border-collapse: collapse;
+    width: 90%;
+    padding: 10px;
+    margin: 30px;
+  }
+  th, td {
+    padding: 0.25rem;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  tbody tr:nth-child(odd) {
+    background: #eee;
+  }
+    
 /* -------------- Listagem de alunos e tarefas por turma ---------------- */
 
 .textoTopo1{

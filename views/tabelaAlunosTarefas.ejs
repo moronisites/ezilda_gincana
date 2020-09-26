@@ -311,7 +311,7 @@
       tarefaTurmaIdTxt = btId.substr(3,5);
       tarefaTurmaId = parseInt(tarefaTurmaIdTxt, 10);
       var url = '/tarefa/' + tarefaTurmaId;
-      console.log(tarefaTurmaIdTxt);
+//      console.log(tarefaTurmaIdTxt);
       $.ajax({
         url: url, //selecionando o endereço que ira acessar no backend
         type: 'GET', //selecionando o tipo de requesição, PUT,GET,POST,DELETE
@@ -357,7 +357,7 @@
         var descricao = document.getElementById("tarefaTurmaDescricao").value;
         var obs = document.getElementById("tarefaTurmaObs").value;
         var turmaId = parseInt(document.getElementById("idTurmaATual").title,10);
-        alert(turmaId);
+//        alert(turmaId);
         if (tarefaTurmaId != 0) {
           var url = "/tarefaEdita/" + tarefaTurmaId;
         } else {
