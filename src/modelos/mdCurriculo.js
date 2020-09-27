@@ -16,6 +16,7 @@ class Curriculo extends Model {
   static init(sequelize) {
     super.init({
       linguagem: DataTypes.STRING(45),
+      ano: DataTypes.STRING(2),
       habilidadeCod: DataTypes.STRING(15),
       habilidadeDesc: DataTypes.TEXT,
       conhecimento: DataTypes.STRING(45),
