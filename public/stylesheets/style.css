@@ -77,9 +77,10 @@ a {
 
 .alunoNm {
 	font-size:10px;
-	width: 150px;
+	width: 200px !important;
 	height: 25px;
 	max-height: 25px;
+	min-width: 200px !important;
 }
 
 .mediaTr {
@@ -154,6 +155,13 @@ a {
 	padding: 10px;
 	align-items: flex-end;
 	justify-content: space-around;
+}
+
+.alinhaEsquerda{
+	display: flex; 
+	text-align: left; 
+	padding: 10px;
+	align-items: flex-end;
 }
 
 .btPqBase {
@@ -358,6 +366,14 @@ a {
     background-color: #fac090;
 }
 
+.btTurmaF4 {
+    background-color: #e590fa;
+}
+
+.btTurmaF5 {
+    background-color: #fa90c5;
+}
+
 .formulario1 {
     display: block;
     width: 100%;
@@ -391,6 +407,43 @@ a {
 }
 
 .formulario1:hover{
+    background-color: #c9e1fa;
+    border-color: #001f41;
+}
+
+.formulario2 {
+    display: block;
+    width: 200px;
+    padding: 0.3rem 0.3rem;
+    font-size: .8rem;
+    line-height: 1.25;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.formulario2:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: none;
+}
+
+.formulario2::placeholder {
+    color: #868e96;
+    opacity: 1;
+}
+
+.formulario2:disabled,
+.formulario2[readonly] {
+    background-color: #cacaca;
+    opacity: 1;
+}
+
+.formulario2:hover{
     background-color: #c9e1fa;
     border-color: #001f41;
 }

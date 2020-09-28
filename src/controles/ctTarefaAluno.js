@@ -31,7 +31,7 @@ module.exports = {
 
             var listaTarefasTodas = "";
             var topoTarefas = '<th class="alunoNr" >Nr</th>'
-            +'<th class="alunoNm" >Nome do aluno</th>'
+            +'<th class="alunoNm" >NOME DO ALUNO</th>'
             //---- turma -------------------------------
             //+'<th class="alunoNr" >Tr.</th>'
             //---- turma -------------------------------
