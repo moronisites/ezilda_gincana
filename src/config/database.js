@@ -25,7 +25,7 @@ module.exports = {
 //       database: 'escola04',
 // ////=== === === === === === === ===  
 
-//// ===  configuração Umbler Gincana  === ===
+//// ===  configuração Umbler Gincana  ===
 host: 'mysql669.umbler.com',
 port: 41890,
 username: 'sqlallexgin',
