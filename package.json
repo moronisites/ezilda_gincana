@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moronisites/escola004.git"
+    "url": "git+https://github.com/iranimoroni/ezilda_gincana.git"
   },
   "author": "Moroni Pedrosa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/moronisites/escola004/issues"
+    "url": "https://github.com/iranimoroni/ezilda_gincana/issues"
   },
-  "homepage": "https://github.com/moronisites/escola004#readme",
+  "homepage": "https://github.com/iranimoroni/ezilda_gincana#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "consign": "^0.1.6",
