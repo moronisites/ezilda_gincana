@@ -32,7 +32,7 @@ username: 'sqlallexgin',
 password: 'SQL123456',
 database: 'escola04gin',
 ////=== === === === === === === ===  
-
+// ======================================
 
 //// ===  configuração Amazon  ===
 //  nao    host: 'database-escola.chpihgugzrnf.us-east-1.rds.amazonaws.com',
